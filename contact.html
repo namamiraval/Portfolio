@@ -1,0 +1,81 @@
+<!-- contact.html -->
+<div class="container nav-wrap">
+<a href="index.html" class="logo">Aurora</a>
+<nav>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+
+<main class="container contact-page">
+<h1>Contact Me</h1>
+
+
+<!--
+Two options to make this form work when deployed:
+1) Netlify Forms: keep the attributes data-netlify and the hidden form-name input, then deploy to Netlify.
+2) Formspree: replace action with your Formspree endpoint like "https://formspree.io/f/your-id" and remove data-netlify attributes.
+-->
+
+
+<form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+<input type="hidden" name="form-name" value="contact">
+<p class="hidden"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+
+<label for="name">Name</label>
+<input id="name" name="name" type="text" required>
+
+
+<label for="email">Email</label>
+<input id="email" name="email" type="email" required>
+
+
+<label for="gender">Gender</label>
+<select id="gender" name="gender">
+<option>Female</option>
+<option>Male</option>
+<option>Prefer not to say</option>
+</select>
+
+
+<label for="country">Country</label>
+<select id="country" name="country">
+<option value="India">India</option>
+<option value="Other">Other</option>
+</select>
+
+
+<label for="message">Message</label>
+<textarea id="message" name="message" rows="6"></textarea>
+
+
+<button type="submit" class="btn">Send</button>
+</form>
+
+
+<aside class="contact-info">
+<div class="empty-box">
+<h4>Need help?</h4>
+<p>Include your semester and intended topic so I can reply faster.</p>
+</div>
+</aside>
+</main>
+
+
+<footer class="site-footer">
+<div class="container">
+<p>© <span id="year3"></span> Aurora</p>
+</div>
+</footer>
+
+
+<script>
+document.getElementById('year3').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
