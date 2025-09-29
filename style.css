@@ -1,49 +1,175 @@
-/* css/style.css */
+/* css/style.css - FINAL (paste whole file) */
+
+/* ========== VARIABLES ========= */
 :root{
---max-width: 1100px;
---accent: #0b84ff;
---muted: #666;
---bg: #f8f9fb;
---card-bg: #ffffff;
+  --max-width: 1100px;
+  --accent: #0b84ff;
+  --muted: #9aa3ad;
+  --bg-dark: #0e0e0e;
+  --surface: #151515;
+  --card-bg: rgba(255,255,255,0.03);
+  --glass-border: rgba(255,255,255,0.04);
+  --text: #f5f5f5;
 }
+
+/* ========== RESET & BASE ========= */
 *{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:Inter, Arial, sans-serif;background:var(--bg);color:#111}
+html,body{height:100%;margin:0;font-family:Inter, Arial, sans-serif;background:var(--bg-dark);color:var(--text);-webkit-font-smoothing:antialiased}
 .container{max-width:var(--max-width);margin:0 auto;padding:18px}
-.nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
-.logo{font-weight:700;text-decoration:none;color:#111}
-.nav-links{list-style:none;display:flex;gap:18px;margin:0;padding:0}
-.nav-links a{text-decoration:none;color:var(--muted)}
-.site-header{background:white;border-bottom:1px solid #eee}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0e0e0e;  
+  color: #f5f5f5;
+  line-height: 1.6;
+}
+.nav-home {
+  color: #8d0303; 
+}
+.nav-about {
+  color: #4dabf7; 
+}
+
+
+body::before {
+  /* soft dark overlay to keep text readable */
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: #0e0e0e;  
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ========== HEADER / NAV ========= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #270344;
+  backdrop-filter: blur(4px);
+  padding: 12px 0;
+  border-bottom: 1px solid #2d0449;
+}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+.logo{font-weight:800;text-decoration:none;color:var(--accent);font-size:1.1rem}
+.nav-links{list-style:none;display:flex;gap:18px;margin:0;padding:0;align-items:center}
+.nav-links a{text-decoration:none;color:var(--muted);padding:6px 8px;border-radius:6px}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,0.02)}
+.nav-links a:active{color:var(--accent)}
+html { scroll-behavior: smooth; }
+
+/* ========== HERO ========= */
 .hero{display:flex;gap:30px;align-items:center;padding:36px 0}
 .hero-left h1{margin:0 0 10px;font-size:2rem}
 .hero-left p{margin:0 0 12px;color:var(--muted)}
 .cta-row .btn{margin-right:10px}
-.btn{display:inline-block;padding:10px 14px;background:var(--accent);color:white;text-decoration:none;border-radius:8px}
+
+/* ========== BUTTONS ========= */
+.btn{display:inline-block;padding:10px 14px;background:var(--accent);color:white;text-decoration:none;border-radius:8px;border:0;cursor:pointer}
 .btn-outline{background:transparent;color:var(--accent);border:2px solid var(--accent)}
-.boxed-image{border:3px solid #111;padding:6px;border-radius:8px;width:220px;display:block}
 
+/* ========== IMAGES / FRAMES ========= */
+.boxed-image{
+  border:3px solid rgba(255,255,255,0.06);
+  padding:6px;
+  border-radius:8px;
+  width:220px;
+  display:block;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
 
+/* responsive smaller hero image */
+@media (max-width:480px){
+  .boxed-image{width:160px}
+}
+
+/* ========== FEATURED PROJECTS / CARDS ========= */
 .featured{padding:30px 0}
-.section-title{margin-bottom:18px}
+.section-title{color:var(--text);margin-bottom:18px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-.card{background:var(--card-bg);padding:12px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.04);display:flex;flex-direction:column}
+.card{background:var(--card-bg);padding:12px;border-radius:12px;border:1px solid var(--glass-border);box-shadow:0 6px 18px rgba(0,0,0,0.5);display:flex;flex-direction:column}
 .card-image{width:100%;height:140px;object-fit:cover;border-radius:8px}
 .card-body{padding-top:10px}
 .card-links a{color:var(--accent);text-decoration:none;margin-right:8px}
 
+/* optional placeholder box if images are not present */
+.card-placeholder{
+  height:140px; display:flex; align-items:center; justify-content:center;
+  border-radius:8px; background:linear-gradient(180deg,#101216,#0b0b0f); font-weight:600; color:var(--muted);
+}
 
+/* ========== HIGHLIGHT / TWO-COLUMN INFO ========= */
 .highlight{padding:20px 0}
-.container-inner{display:flex;gap:20px;align-items:flex-start}
-.empty-box{width:220px;min-height:140px;border:3px dashed #888;padding:14px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;white-space:normal;word-wrap:break-word}
-.about-short{flex:1}
+.container-inner{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.empty-box{
+  width:220px;min-height:140px;border:3px dashed rgba(255,255,255,0.06);
+  padding:14px;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;white-space:normal;word-wrap:break-word;color:var(--text)
+}
+.about-short{flex:1;color:var(--muted)}
 
+/* ========== CONTACT PAGE LAYOUT ========= */
+.contact-page{display:grid;grid-template-columns:1fr 320px;gap:28px;padding:30px 0;align-items:start}
+.contact-form-wrap h1{margin:0 0 6px;font-size:1.6rem}
+.muted{color:var(--muted);margin:0 0 14px}
 
-.site-footer{padding:20px 0;background:white;border-top:1px solid #eee;margin-top:30px}
+/* form layout */
+.contact-form{
+  display:flex;flex-direction:column;gap:12px;background:var(--card-bg);padding:16px;border-radius:10px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.5);border:1px solid var(--glass-border)
+}
+.contact-form label{font-weight:600;font-size:0.95rem;color:var(--text)}
+.contact-form input, .contact-form select, .contact-form textarea{
+  padding:10px;border:1px solid rgba(255,255,255,0.04);border-radius:8px;font-size:0.95rem;
+  background:transparent;color:var(--text)
+}
+.contact-form input::placeholder, .contact-form textarea::placeholder{color:rgba(255,255,255,0.35)}
+.form-actions{display:flex;gap:10px;margin-top:8px}
+.form-success{background:#e6ffed;border:1px solid #8ae39e;padding:10px;border-radius:8px;margin-bottom:8px;color:#0a6b2e}
 
+/* keep design-only "clear" button visible contrast */
+.btn-outline{border:2px solid rgba(255,255,255,0.06);color:var(--text)}
 
-/* contact form */
-.contact-page{display:grid;grid-template-columns:1fr 260px;gap:24px;padding:30px 0}
-.contact-form{display:flex;flex-direction:column;gap:10px;background:var(--card-bg);padding:16px;border-radius:10px}
-.contact-form label{font-weight:600}
-.contact-form input,.contact-form select,.contact-form textarea{padding:10px;border:1px solid #ddd;border-radius:6px;font-size:1rem;font-family:inherit}
-.contact-form textarea{resize:vertical;min-height:100px}
+/* ========== CONTACT INFO CARD ========= */
+.info-card{background:var(--card-bg);padding:16px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.5);border:1px solid var(--glass-border)}
+.info-card h3{margin:0 0 8px;color:var(--text)}
+.info-row{display:flex;gap:10px;align-items:center;margin:8px 0}
+.info-row a{color:var(--muted);text-decoration:none}
+.icon{width:18px;height:18px;flex:0 0 18px;fill:currentColor;opacity:0.85}
+
+/* push the contact-info a little downwards as requested */
+.contact-info { margin-top: 40px; }
+
+/* social icons */
+.social-list{list-style:none;padding:0;margin:8px 0 0;display:flex;gap:10px}
+.social-link{display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.02);border-radius:8px;padding:10px;text-decoration:none}
+.social-icon{width:20px;height:20px;display:block;fill:currentColor;opacity:0.95}
+.social-link:hover{transform:translateY(-3px);transition:transform .18s ease}
+
+/* ========== FOOTER ========= */
+.site-footer{padding:20px 0;background:transparent;border-top:1px solid rgba(255,255,255,0.03);margin-top:30px}
+.site-footer p{color:var(--muted);margin:0}
+
+/* ========== MISC / UTILITIES ========= */
+.hidden{display:none}
+.container-inner > * { min-width: 0 } /* prevent overflow in flex children */
+
+/* ========== RESPONSIVE ========= */
+@media (max-width:900px){
+  .hero{flex-direction:column}
+  .container-inner{flex-direction:column}
+  .contact-page{grid-template-columns:1fr;gap:16px}
+  .contact-info{order:2;margin-top:0} /* move contact info below on small screens */
+}
+@media (max-width:480px){
+  .boxed-image{width:160px}
+  .nav-links{gap:10px}
+  .logo{font-size:1rem}
+}
+
+/* ========== SMALL INTERACTIONS ========= */
+a{transition:color .18s ease}
+button, .btn{transition:transform .14s ease, box-shadow .14s ease}
+button:hover, .btn:hover{transform:translateY(-2px)}
