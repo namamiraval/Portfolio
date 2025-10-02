@@ -93,8 +93,7 @@
 
   <script>
     document.getElementById('year3').textContent = new Date().getFullYear();
-
-    // design-only form behaviour: prevent actual submission and show a nice message
+    
     const form = document.querySelector('.contact-form');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
